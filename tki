@@ -117,7 +117,7 @@ TabGames:CreateButton({
 -- === Onglet Credits ===
 local SigTab = Window:CreateTab("Credits", ICON_ID)
 SigTab:CreateParagraph({Title = "Signature", Content = "by enzoisgod"})
-SigTab:CreateParagraph({Title = "Contributeur", Content = "!' LainEnSpace"})
+SigTab:CreateParagraph({Title = "Contributeur", Content = "!' azkHori's"})
 
 -- Toggle GUI (RightShift)
 local UserInputService = game:GetService("UserInputService")
