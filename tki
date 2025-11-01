@@ -114,3 +114,18 @@ TabGames:CreateButton({
    end,
 })
 
+-- === Onglet Credits ===
+local SigTab = Window:CreateTab("Credits", ICON_ID)
+SigTab:CreateParagraph({Title = "Signature", Content = "by enzoisgod"})
+SigTab:CreateParagraph({Title = "Contributeur", Content = "!' LainEnSpace"})
+
+-- Toggle GUI (RightShift)
+local UserInputService = game:GetService("UserInputService")
+local panelVisible = true
+UserInputService.InputBegan:Connect(function(input, gameProcessed)
+    if gameProcessed then return end
+    if input.KeyCode == Enum.KeyCode.RightShift then
+        panelVisible = not panelVisible
+        if panelVisible then Rayfield:Show() else Rayfield:Hide() end
+    end
+end)
