@@ -1,1 +1,116 @@
+task.wait(1) -- délai pour laisser le jeu charger l’environnement UI
+
+local success, Rayfield = pcall(function()
+   return loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+end)
+
+if not success or not Rayfield then
+   warn("⚠️ Impossible de charger Rayfield depuis l'URL principale. Utilisation du lien miroir.")
+   Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Rayfield/main/source"))()
+end
+
+local ICON_ID = 104365492568677 -- change si besoin
+
+-- === Création de la fenêtre ===
+local Window = Rayfield:CreateWindow({
+   Name = "Effexe - Site 54 | v1.0 | Whitelisted ☑️",
+   Icon = ICON_ID,
+   LoadingTitle = "Effexe - Site 54 is loading...",
+   LoadingSubtitle = "v1.0",
+   Theme = "Bloom",
+   DisableRayfieldPrompts = true,
+   DisableBuildWarnings = true,
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil,
+      FileName = "Effexe54"
+   },
+   Discord = {
+      Enabled = true,
+      Invite = "Q5MZxNDtWa",
+      RememberJoins = false
+   },
+   KeySystem = true,
+   KeySettings = {
+      Title = "Effexe - Site 54 | Whitelist | v1.0",
+      Subtitle = "Whitelist is permanent",
+      Note = "Join Discord to get the Whitelist Key (.gg/Q5MZxNDtWa)",
+      FileName = "Effexe54_Whitelist",
+      SaveKey = true,
+      GrabKeyFromSite = false,
+      Key = {"Effexe54"}
+   }
+})
+
+-- === Onglet Welcome ===
+local TabWelcome = Window:CreateTab("📜 Welcome", ICON_ID)
+TabWelcome:CreateParagraph({Title = "Welcome to Effexe - Site 54 !", Content = "If you need any help join : https://discord.gg/Q5MZxNDtWa"})
+TabWelcome:CreateParagraph({Title = "Version", Content = "v1.0 (Updated on 10/12/2025)"})
+TabWelcome:CreateParagraph({Title = "UI Controls", Content = "Utilisez les boutons ci-dessous pour exécuter vos fonctions locales."})
+
+-- === Onglet Site 54Exploit ===
+local Tab = Window:CreateTab("🎲 Site 54Exploit", ICON_ID)
+
+Tab:CreateButton({
+   Name = "ACS Destruct",
+   Callback = function()
+      Rayfield:Notify({Title = "ACS Destruct", Content = "Exécution du script ACS Destruct...", Duration = 6.5, Image = ICON_ID})
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/enzoisgod/money-give/refs/heads/main/acs%20killer%2054"))()
+   end,
+})
+
+Tab:CreateButton({
+   Name = "Give XP",
+   Callback = function()
+      Rayfield:Notify({Title = "Give XP", Content = "Exécution du script Give XP...", Duration = 6.5, Image = ICON_ID})
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/enzoisgod/money-give/refs/heads/main/script"))()
+   end,
+})
+
+Tab:CreateButton({
+   Name = "Give All WL",
+   Callback = function()
+      Rayfield:Notify({Title = "Give All WL", Content = "Exécution du script Give All WL...", Duration = 6.5, Image = ICON_ID})
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/enzoisgod/money-give/refs/heads/main/wl%20give"))()
+   end,
+})
+
+-- Bouton manuel Kill all
+Tab:CreateButton({
+   Name = "Kill all",
+   Callback = function()
+      Rayfield:Notify({Title = "Kill all", Content = "Exécution du script Kill all...", Duration = 6.5, Image = ICON_ID})
+      pcall(function()
+         local fn = loadstring(game:HttpGet("https://raw.githubusercontent.com/enzoisgod/money-give/refs/heads/main/kill%20all%2054"))
+         if type(fn) == "function" then
+            pcall(fn)
+         end
+      end)
+   end,
+})
+
+-- === Onglet Games ===
+local TabGames = Window:CreateTab("🎮 Games", ICON_ID)
+
+TabGames:CreateButton({
+   Name = "Infinite Yield",
+   Callback = function()
+      Rayfield:Notify({Title = "Infinite Yield", Content = "Exécution du script Infinite Yield...", Duration = 6.5, Image = ICON_ID})
+      loadstring(game:HttpGet('https://raw.githubusercontent.com/DarkNetworks/Infinite-Yield/main/latest.lua'))()
+   end,
+})
+
+TabGames:CreateButton({
+   Name = "SaveInstance",
+   Callback = function()
+      Rayfield:Notify({Title = "SaveInstance", Content = "Exécution du script SaveInstance...", Duration = 6.5, Image = ICON_ID})
+      local Params = {
+         RepoURL = "https://raw.githubusercontent.com/luau/SynSaveInstance/main/",
+         SSI = "saveinstance",
+      }
+      local synsaveinstance = loadstring(game:HttpGet(Params.RepoURL .. Params.SSI .. ".luau", true), Params.SSI)()
+      local Options = {}
+      synsaveinstance(Options)
+   end,
+})
 
