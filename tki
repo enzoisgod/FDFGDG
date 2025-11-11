@@ -13,10 +13,10 @@ local ICON_ID = 91623743990851 -- change si besoin
 
 -- === Création de la fenêtre ===
 local Window = Rayfield:CreateWindow({
-   Name = "Effexe - Site 54 | v1.0 | Whitelisted ☑️",
+   Name = "Effexe - Site 54 | v1.2 | Whitelisted ☑️",
    Icon = ICON_ID,
    LoadingTitle = "Effexe - Site 54 is loading...",
-   LoadingSubtitle = "v1.0",
+   LoadingSubtitle = "v1.2",
    Theme = "Ocean",
    DisableRayfieldPrompts = true,
    DisableBuildWarnings = true,
@@ -32,7 +32,7 @@ local Window = Rayfield:CreateWindow({
    },
    KeySystem = true,
    KeySettings = {
-      Title = "Effexe - Site 54 | Whitelist | v1.0",
+      Title = "Effexe - Site 54 | Whitelist | v1.2",
       Subtitle = "Whitelist is permanent",
       Note = "Join Discord to get the Whitelist Key (.gg/Q5MZxNDtWa)",
       FileName = "Effexe54_Whitelist",
@@ -96,7 +96,15 @@ TabGames:CreateButton({
    Name = "Infinite Yield",
    Callback = function()
       Rayfield:Notify({Title = "Infinite Yield", Content = "Exécution du script Infinite Yield...", Duration = 6.5, Image = ICON_ID})
-      loadstring(game:HttpGet('https://raw.githubusercontent.com/DarkNetworks/Infinite-Yield/main/latest.lua'))()
+      loadstring(game:HttpGet(https://raw.githubusercontent.com/DarkNetworks/Infinite-Yield/main/latest.lua'))()
+   end,
+})
+
+TabGames:CreateButton({
+   Name = "Btools (Client)",
+   Callback = function()
+      Rayfield:Notify({Title = "Btools", Content = "Exécution du script Btools...", Duration = 6.5, Image = ICON_ID})
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/enzoisgod/tl/refs/heads/main/btools"))()
    end,
 })
 
@@ -114,10 +122,22 @@ TabGames:CreateButton({
    end,
 })
 
+-- === Onglet Neptune Script ===
+local TabNept = Window:CreateTab("🎮 Neptune Script", ICON_ID)
+
+Tab:CreateButton({
+   Name = "Site 65 (Fonctionne sur 54)",
+   Callback = function()
+      Rayfield:Notify({Title = "ACS Destruct", Content = "Exécution du script Neptune Script...", Duration = 6.5, Image = ICON_ID})
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/e1998ee/site65/refs/heads/main/neptunescriptssss"))()
+   end,
+})
+
 -- === Onglet Credits ===
 local SigTab = Window:CreateTab("Credits", ICON_ID)
 SigTab:CreateParagraph({Title = "Signature", Content = "by enzoisgod"})
-SigTab:CreateParagraph({Title = "Contributeur", Content = "!' azkHori's"})
+SigTab:CreateParagraph({Title = "Contributeur", Content = "♱ azrPg ♱"})
+SigTab:CreateParagraph({Title = "Neptune Script", Content = ".gg/ktyAAUh8bR"})
 
 -- Toggle GUI (RightShift)
 local UserInputService = game:GetService("UserInputService")
