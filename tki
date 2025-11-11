@@ -1,117 +1,131 @@
-task.wait(1) -- délai pour laisser le jeu charger l’environnement UI
+task.wait(1) -- Laisse le jeu charger l’environnement avant d’afficher l’interface
 
+-- === Chargement de la bibliothèque Rayfield ===
 local success, Rayfield = pcall(function()
    return loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 end)
 
 if not success or not Rayfield then
-   warn("⚠️ Impossible de charger Rayfield depuis l'URL principale. Utilisation du lien miroir.")
+   warn("⚠️ Impossible de charger Rayfield depuis l’URL principale. Utilisation du lien miroir...")
    Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Rayfield/main/source"))()
 end
 
-local ICON_ID = 91623743990851 -- change si besoin
+-- === Configuration visuelle ===
+local ICON_ID = 91623743990851
+local THEME = "Aqua" -- Tu peux changer : Ocean, Twilight, Crimson, etc.
 
--- === Création de la fenêtre ===
+-- === Fenêtre principale ===
 local Window = Rayfield:CreateWindow({
-   Name = "Effexe - Site 54 | v1.2 | Whitelisted ☑️",
+   Name = "Effexe - Site 54 | v2.0 | Whitelist ☑️",
    Icon = ICON_ID,
-   LoadingTitle = "Effexe - Site 54 is loading...",
-   LoadingSubtitle = "v1.2",
-   Theme = "Ocean",
+   LoadingTitle = "Effexe - Site 54 v2.0 est en cours de chargement...",
+   LoadingSubtitle = "Merci de patienter pendant l’initialisation de l’interface...",
+   Theme = THEME,
    DisableRayfieldPrompts = true,
    DisableBuildWarnings = true,
    ConfigurationSaving = {
       Enabled = true,
-      FolderName = nil,
-      FileName = "Effexe54"
+      FolderName = "Effexe54_Config",
+      FileName = "Effexe54_V2_Paramètres"
    },
    Discord = {
       Enabled = true,
       Invite = "Q5MZxNDtWa",
-      RememberJoins = false
+      RememberJoins = true
    },
    KeySystem = true,
    KeySettings = {
-      Title = "Effexe - Site 54 | Whitelist | v1.2",
-      Subtitle = "Whitelist is permanent",
-      Note = "Join Discord to get the Whitelist Key (.gg/Q5MZxNDtWa)",
-      FileName = "Effexe54_Whitelist",
+      Title = "Effexe - Site 54 | Système de Whitelist",
+      Subtitle = "La clé est permanente",
+      Note = "Rejoins le Discord pour obtenir ta clé : discord.gg/Q5MZxNDtWa",
+      FileName = "Effexe54_Whitelist_V2",
       SaveKey = true,
       GrabKeyFromSite = false,
       Key = {"Effexe54"}
    }
 })
 
--- === Onglet Welcome ===
-local TabWelcome = Window:CreateTab("📜 Welcome", ICON_ID)
-TabWelcome:CreateParagraph({Title = "Welcome to Effexe - Site 54 !", Content = "If you need any help join : https://discord.gg/Q5MZxNDtWa"})
-TabWelcome:CreateParagraph({Title = "Version", Content = "v1.0 (Updated on 10/12/2025)"})
-TabWelcome:CreateParagraph({Title = "UI Controls", Content = "Utilisez les boutons ci-dessous pour exécuter vos fonctions locales."})
+-- === Notification de démarrage ===
+Rayfield:Notify({
+   Title = "Effexe - Site 54 v2.0",
+   Content = "✅ Interface chargée avec succès ! Bienvenue.",
+   Duration = 7,
+   Image = ICON_ID
+})
 
--- === Onglet Site 54Exploit ===
-local Tab = Window:CreateTab("🎲 Site 54 Exploit", ICON_ID)
+-- === Récupération du pseudo du joueur ===
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local PlayerName = LocalPlayer and LocalPlayer.DisplayName or "Inconnu"
+
+-- === Onglet Accueil ===
+local TabWelcome = Window:CreateTab("📜 Accueil", ICON_ID)
+TabWelcome:CreateParagraph({Title = "Bienvenue sur Effexe - Site 54 v2.0 !", Content = "Besoin d’aide ? Rejoins notre serveur Discord : discord.gg/Q5MZxNDtWa"})
+TabWelcome:CreateParagraph({Title = "Informations sur la version", Content = "Version : v2.0 • Mise à jour du 11/11/2025"})
+TabWelcome:CreateParagraph({Title = "Ton pseudo", Content = "👤 Utilisateur : " .. PlayerName})
+TabWelcome:CreateParagraph({Title = "Contrôles", Content = "Appuie sur [RightShift] pour afficher ou cacher le panneau."})
+
+-- === Onglet Site 54 Exploit ===
+local Tab = Window:CreateTab("🎲 Exploits Site 54", ICON_ID)
 
 Tab:CreateButton({
    Name = "ACS Destruct",
    Callback = function()
-      Rayfield:Notify({Title = "ACS Destruct", Content = "Exécution du script ACS Destruct...", Duration = 6.5, Image = ICON_ID})
+      Rayfield:Notify({Title = "ACS Destruct", Content = "Exécution du script ACS Destruct...", Duration = 6, Image = ICON_ID})
       loadstring(game:HttpGet("https://raw.githubusercontent.com/enzoisgod/money-give/refs/heads/main/acs%20killer%2054"))()
    end,
 })
 
 Tab:CreateButton({
-   Name = "Give XP",
+   Name = "Donner XP",
    Callback = function()
-      Rayfield:Notify({Title = "Give XP", Content = "Exécution du script Give XP...", Duration = 6.5, Image = ICON_ID})
+      Rayfield:Notify({Title = "Donner XP", Content = "Exécution du script Give XP...", Duration = 6, Image = ICON_ID})
       loadstring(game:HttpGet("https://raw.githubusercontent.com/enzoisgod/money-give/refs/heads/main/script"))()
    end,
 })
 
 Tab:CreateButton({
-   Name = "Give All WL",
+   Name = "Donner toutes les Whitelists",
    Callback = function()
-      Rayfield:Notify({Title = "Give All WL", Content = "Exécution du script Give All WL...", Duration = 6.5, Image = ICON_ID})
+      Rayfield:Notify({Title = "Give All WL", Content = "Exécution du script Give All WL...", Duration = 6, Image = ICON_ID})
       loadstring(game:HttpGet("https://raw.githubusercontent.com/enzoisgod/money-give/refs/heads/main/wl%20give"))()
    end,
 })
 
--- Bouton manuel Kill all
 Tab:CreateButton({
-   Name = "Kill all",
+   Name = "Tuer tout le monde",
    Callback = function()
-      Rayfield:Notify({Title = "Kill all", Content = "Exécution du script Kill all...", Duration = 6.5, Image = ICON_ID})
+      Rayfield:Notify({Title = "Kill All", Content = "Exécution du script Kill All...", Duration = 6, Image = ICON_ID})
       pcall(function()
          local fn = loadstring(game:HttpGet("https://raw.githubusercontent.com/enzoisgod/money-give/refs/heads/main/kill%20all%2054"))
-         if type(fn) == "function" then
-            pcall(fn)
-         end
+         if type(fn) == "function" then fn() end
       end)
    end,
 })
 
--- === Onglet Games ===
-local TabGames = Window:CreateTab("🎮 Games", ICON_ID)
+-- === Onglet Jeux ===
+local TabGames = Window:CreateTab("🎮 Jeux", ICON_ID)
 
 TabGames:CreateButton({
    Name = "Infinite Yield",
    Callback = function()
-      Rayfield:Notify({Title = "Infinite Yield", Content = "Exécution du script Infinite Yield...", Duration = 6.5, Image = ICON_ID})
-      loadstring(game:HttpGet(https://raw.githubusercontent.com/DarkNetworks/Infinite-Yield/main/latest.lua'))()
+      Rayfield:Notify({Title = "Infinite Yield", Content = "Chargement du script admin...", Duration = 6, Image = ICON_ID})
+      loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
    end,
 })
 
 TabGames:CreateButton({
    Name = "Btools (Client)",
    Callback = function()
-      Rayfield:Notify({Title = "Btools", Content = "Exécution du script Btools...", Duration = 6.5, Image = ICON_ID})
+      Rayfield:Notify({Title = "Btools", Content = "Exécution du script Btools...", Duration = 6, Image = ICON_ID})
       loadstring(game:HttpGet("https://raw.githubusercontent.com/enzoisgod/tl/refs/heads/main/btools"))()
    end,
 })
 
 TabGames:CreateButton({
-   Name = "SaveInstance",
+   Name = "Sauvegarder l’instance (SaveInstance)",
    Callback = function()
-      Rayfield:Notify({Title = "SaveInstance", Content = "Exécution du script SaveInstance...", Duration = 6.5, Image = ICON_ID})
+      Rayfield:Notify({Title = "SaveInstance", Content = "Création d’une copie de la carte...", Duration = 6, Image = ICON_ID})
       local Params = {
          RepoURL = "https://raw.githubusercontent.com/luau/SynSaveInstance/main/",
          SSI = "saveinstance",
@@ -122,30 +136,37 @@ TabGames:CreateButton({
    end,
 })
 
--- === Onglet Neptune Script ===
-local TabNept = Window:CreateTab("🎮 Neptune Script", ICON_ID)
+-- === Onglet Script Neptune ===
+local TabNept = Window:CreateTab("🌌 Script Neptune", ICON_ID)
 
 TabNept:CreateButton({
-   Name = "Site 65 (Fonctionne sur 54)",
+   Name = "Site 65 (compatible Site 54)",
    Callback = function()
-      Rayfield:Notify({Title = "ACS Destruct", Content = "Exécution du script Neptune Script...", Duration = 6.5, Image = ICON_ID})
+      Rayfield:Notify({Title = "Script Neptune", Content = "Exécution du script Neptune...", Duration = 6, Image = ICON_ID})
       loadstring(game:HttpGet("https://raw.githubusercontent.com/e1998ee/site65/refs/heads/main/neptunescriptssss"))()
    end,
 })
 
--- === Onglet Credits ===
-local SigTab = Window:CreateTab("Credits", ICON_ID)
-SigTab:CreateParagraph({Title = "Signature", Content = "by enzoisgod"})
+-- === Onglet Crédits ===
+local SigTab = Window:CreateTab("👑 Crédits", ICON_ID)
+SigTab:CreateParagraph({Title = "Créateur", Content = "by enzoisgod"})
 SigTab:CreateParagraph({Title = "Contributeur", Content = "♱ azrPg ♱"})
-SigTab:CreateParagraph({Title = "Neptune Script", Content = ".gg/ktyAAUh8bR"})
+SigTab:CreateParagraph({Title = "Script Neptune", Content = "discord.gg/ktyAAUh8bR"})
 
--- Toggle GUI (RightShift)
+-- === Raccourci clavier pour afficher / cacher l’UI ===
 local UserInputService = game:GetService("UserInputService")
 local panelVisible = true
 UserInputService.InputBegan:Connect(function(input, gameProcessed)
     if gameProcessed then return end
     if input.KeyCode == Enum.KeyCode.RightShift then
         panelVisible = not panelVisible
-        if panelVisible then Rayfield:Show() else Rayfield:Hide() end
+        if panelVisible then
+            Rayfield:Notify({Title = "Interface", Content = "Panneau affiché", Duration = 3, Image = ICON_ID})
+            Rayfield:Show()
+        else
+            Rayfield:Notify({Title = "Interface", Content = "Panneau masqué", Duration = 3, Image = ICON_ID})
+            Rayfield:Hide()
+        end
     end
 end)
+
