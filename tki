@@ -125,7 +125,7 @@ TabGames:CreateButton({
 -- === Onglet Neptune Script ===
 local TabNept = Window:CreateTab("🎮 Neptune Script", ICON_ID)
 
-Tab:CreateButton({
+TabNept:CreateButton({
    Name = "Site 65 (Fonctionne sur 54)",
    Callback = function()
       Rayfield:Notify({Title = "ACS Destruct", Content = "Exécution du script Neptune Script...", Duration = 6.5, Image = ICON_ID})
