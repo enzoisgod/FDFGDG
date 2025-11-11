@@ -12,6 +12,7 @@ end
 
 -- === Configuration visuelle ===
 local ICON_ID = 91623743990851
+local ICON_NEPT = 79960926998829
 local THEME = "Aqua" -- Tu peux changer : Ocean, Twilight, Crimson, etc.
 
 -- === Fenêtre principale ===
@@ -137,7 +138,7 @@ TabGames:CreateButton({
 })
 
 -- === Onglet Script Neptune ===
-local TabNept = Window:CreateTab("🌌 Script Neptune", ICON_ID)
+local TabNept = Window:CreateTab("🌌 Script Neptune", ICON_NEPT)
 
 TabNept:CreateButton({
    Name = "Site 65 (compatible Site 54)",
