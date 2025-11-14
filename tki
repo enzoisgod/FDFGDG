@@ -39,10 +39,10 @@ local Window = Rayfield:CreateWindow({
       Title = "Effexe - Site 54 | Système de Whitelist",
       Subtitle = "La clé est permanente",
       Note = "Rejoins le Discord pour obtenir ta clé : discord.gg/Q5MZxNDtWa",
-      FileName = "Effexe54_Whitelist_V2",
+      FileName = "FinSite54_V2",
       SaveKey = true,
       GrabKeyFromSite = false,
-      Key = {"Effexe54"}
+      Key = {"FinDuScript"}
    }
 })
 
