@@ -1,4 +1,4 @@
-task.wait(1) -- Laisse le jeu charger l’environnement avant d’afficher l’interface
+task.wait(1)
 
 -- === Chargement de la bibliothèque Rayfield ===
 local success, Rayfield = pcall(function()
