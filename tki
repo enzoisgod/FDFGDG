@@ -151,8 +151,8 @@ TabNept:CreateButton({
 -- === Onglet Crédits ===
 local SigTab = Window:CreateTab("👑 Crédits", ICON_ID)
 SigTab:CreateParagraph({Title = "Créateur", Content = "enzoisgod"})
-SigTab:CreateParagraph({Title = "Contributeur 1", Content = "Nagato"})
-SigTab:CreateParagraph({Title = "Contributeur 2", Content = "♱ azrPg ♱"})
+SigTab:CreateParagraph({Title = "Co-Créateur", Content = "NagatoTop1"})
+SigTab:CreateParagraph({Title = "Contributeur", Content = "♱ azrPg ♱"})
 SigTab:CreateParagraph({Title = "Script Neptune", Content = "discord.gg/ktyAAUh8bR"})
 
 -- === Raccourci clavier pour afficher / cacher l’UI ===
